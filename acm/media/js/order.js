@@ -5,7 +5,7 @@ window.onload = function() {
 		item,m,total=0.0;
 	for(var i=0, j=items.length; i < j; i++) {
 		item = items[i];
-		m = item.children[0].innerText.match(p);
+		m = item.children[0].innerHTML.match(p);
 		item.onclick=(function(name, price, id) {
 			return function() {
 				cart[id] ? cart[id] = { name: name, quantity: cart[id].quantity+1 }
@@ -24,10 +24,10 @@ window.onload = function() {
 
 		// little validation
 		if(!p.test(wnumber)) {
-			error.innerText = "WNumber required";
+			error.innerHTML = "WNumber required";
 			return;
 		} else if (empty(cart)) {
-			error.innerText = "Empty cart";
+			error.innerHTML = "Empty cart";
 			return;
 		}
 
@@ -43,15 +43,14 @@ function updateCartDiv(cart, total) {
 		cartDiv = document.getElementById("cart"),
 		elem, total=0;
 	for(i in cart) {
-		if (i != "total") {
-			elem = document.createElement("div");
-			elem.innerText = cart[i].quantity + " x " + cart[i].name;
-			d.appendChild(elem);
-		}
+		elem = document.createElement("div");
+		elem.innerHTML = cart[i].quantity + " x " + cart[i].name;
+		d.appendChild(elem);
 	}
 	d.setAttribute("class", "cart_items");
+	console.log(cartDiv);
 	cartDiv.replaceChild(d, cartDiv.children[1]);
-	document.getElementById("cart_total").innerText = total.toFixed(2);
+	document.getElementById("cart_total").innerHTML = total.toFixed(2);
 }
 
 function addKeyVal(form, key, val) {
