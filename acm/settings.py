@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'cabinet',                      # Or path to database file if using sqlite3.
+        'NAME': 'acm',                      # Or path to database file if using sqlite3.
         'USER': 'acm',                      # Not used with sqlite3.
         'PASSWORD': '405majors',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -45,17 +45,19 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '/home/matt/ACM/acm/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = 'http://localhost:8000/site_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
+
+STATIC_MEDIA_ROOT = '/home/matt/ACM/acm/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'z5$jr#c-_z0!f4fw*x9u+_!_4xs!=_w*sg0$x*v+8g)r-h&exq'
@@ -73,14 +75,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.middleware.csrf.CsrfResponseMiddleware',
 )
 
 ROOT_URLCONF = 'acm.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    "/home/matt/ACM/acm/templates/",
 )
 
 INSTALLED_APPS = (

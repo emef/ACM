@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block head %}
+
+<title>{% block title %} ACM Cabinet {% endblock title %} </title>
+<link rel="stylesheet" type="text/css" href="../site_media/cabinet/base.css" />
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% endblock head %}
+
+{% block body %}
+
+<div id="head">
+	<div class='logo'></div>
+	<div>ACM Cabinet - {% block heading %} {% endblock heading %}</div>
+</div>
+
+<div id="leftbar">
+	<div id="choices">
+		<a href="add_credit">Add Credit</a>
+		<a href="order">Start an Order</a>
+		<a href="suggest">Suggest an Item</a>
+	</div>
+	{% block leftbar %}
+	{% endblock leftbar %}
+</div>
+
+<div id="content">
+{% block content %}
+{% endblock content %}
+</div>
+
+{% endblock body %}

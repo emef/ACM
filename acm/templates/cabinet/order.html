@@ -1,0 +1,49 @@
+{% extends "cabinet/base.html" %}
+
+{% block scripts %}
+<script type="text/javascript" src="../site_media/js/json2.js"></script>
+<script type="text/javascript" src="../site_media/js/order.js"></script>
+{% endblock scripts %}
+
+{% block title %}
+ACM Cabinet - Order
+{% endblock title %}
+
+{% block heading %}
+Make an Order
+{% endblock heading %}
+
+{% block leftbar %}
+<div id="cart">
+	<h2>Shopping Cart</h2>
+	<div id="cart_items"></div>
+	<div>
+		Total: $<span id="cart_total">0.00</span>
+	</div>
+</div>
+<div>
+	<h2>Checkout</h2>
+	<div>
+		W<input type="text" id="wnumber" />
+	</div>
+	<div>
+		<button id="purchase">Purchase</button>
+	</div>
+</div>
+<form id="purchase_form" action="checkout" method="post">{% csrf_token %}
+<input type="submit" />
+</form>
+{% endblock leftbar %}
+
+{% block content %}
+<div id="items">
+{% for item in items %}
+	<div>
+		<div>{{ item.name }} (${{ item.price }}) ID#{{ item.id }}</div>
+		<div>
+			<img src="{{item.img.url}}" alt="{{item.name}}" />
+		</div>
+	</div>
+{% endfor %}
+</div>
+{% endblock content %}

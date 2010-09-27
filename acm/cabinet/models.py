@@ -12,7 +12,7 @@ class Item(models.Model):
 	name = models.CharField(max_length=100)
 	cost = models.DecimalField(max_digits=5, decimal_places=2)
 	price = models.DecimalField(max_digits=5, decimal_places=2)
-	img = models.ImageField(upload_to="/images/items")
+	img = models.ImageField(upload_to="items/")
 
 	def __unicode__(self):
 		return "%s($%.2f)" % (self.name, self.price)
