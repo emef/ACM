@@ -102,3 +102,7 @@ html,body {
 	max-height: 250px;
 }
 
+#wnumber_error {
+	font-size:9pt;
+	color: red;
+}

@@ -1,0 +1,18 @@
+{% extends "cabinet/base.html" %}
+
+{% block title %}
+ACM Cabinet - Checkout
+{% endblock title %}
+
+{% block heading %}
+Checkout
+{% endblock heading %}
+
+{% block content %}
+	{{ profile.user.username }}<br/>
+	{{ profile.credit }}
+	<br />
+	{% for k,v in data.items %}
+		{{ v.name }} {{ v.quantity }} <br />
+	{% endfor %}
+{% endblock content %}

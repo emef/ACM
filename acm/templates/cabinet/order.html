@@ -23,6 +23,7 @@ Make an Order
 </div>
 <div>
 	<h2>Checkout</h2>
+	<div id="wnumber_error"></div>
 	<div>
 		W<input type="text" id="wnumber" />
 	</div>
@@ -30,8 +31,7 @@ Make an Order
 		<button id="purchase">Purchase</button>
 	</div>
 </div>
-<form id="purchase_form" action="checkout" method="post">{% csrf_token %}
-<input type="submit" />
+<form id="purchase_form" action="checkout" method="post">
 </form>
 {% endblock leftbar %}
 
