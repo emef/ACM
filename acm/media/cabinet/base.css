@@ -6,6 +6,11 @@ html,body {
 	font-family: verdana;
 }
 
+.title {
+	font-size: 14pt;
+	font-weight: bold;
+}
+
 #head {
 	width: 100%;
 	background-color: #EEE;
@@ -16,7 +21,7 @@ html,body {
 	display: -moz-inline-stack;
 	display: inline-block;
 	*display: inline;
-	color: #444;
+	color: #192958;
 	font-size: 28pt;
 	margin-right: 25px;
 }
@@ -105,4 +110,12 @@ html,body {
 #wnumber_error {
 	font-size:9pt;
 	color: red;
+}
+
+#checkout_items {
+	padding: 15px 0;
+}
+
+#checkout_items > div + div {
+	margin-left: 15px;
 }

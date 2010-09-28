@@ -1,6 +1,12 @@
 {% extends "cabinet/base.html" %}
 
 {% block scripts %}
+{% if cart %}
+<script type="text/javascript">
+var session_cart = {{ cart }},
+	session_total = {{ total }};
+</script>
+{% endif %}
 <script type="text/javascript" src="../site_media/js/json2.js"></script>
 <script type="text/javascript" src="../site_media/js/order.js"></script>
 {% endblock scripts %}
@@ -20,6 +26,9 @@ Make an Order
 	<div>
 		Total: $<span id="cart_total">0.00</span>
 	</div>
+	<div>
+		<button id="cart_reset">reset</button>
+	</div>
 </div>
 <div>
 	<h2>Checkout</h2>
@@ -31,7 +40,7 @@ Make an Order
 		<button id="purchase">Purchase</button>
 	</div>
 </div>
-<form id="purchase_form" action="checkout" method="post">
+<form id="purchase_form" action="" method="post">
 </form>
 {% endblock leftbar %}
 

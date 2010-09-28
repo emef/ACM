@@ -1,4 +1,5 @@
 {% extends "cabinet/base.html" %}
+{% load cabinet_extras %}
 
 {% block title %}
 ACM Cabinet - Checkout
@@ -9,10 +10,21 @@ Checkout
 {% endblock heading %}
 
 {% block content %}
-	{{ profile.user.username }}<br/>
-	{{ profile.credit }}
-	<br />
-	{% for k,v in data.items %}
-		{{ v.name }} {{ v.quantity }} <br />
+<div class='title'> W{{ profile.user.username }} </div>
+<div> Available credit: {{ profile.credit|currency }} </div>
+<div id='checkout_items'>
+	<div class='title'>Cart Items</div>
+	{% for k,v in cart.items %}
+		<div>{{ v.quantity }} x {{ v.name }} </div>
 	{% endfor %}
+	<div>Total: {{ total|currency }} </div>
+</div>
+<div class='title'>Complete Purchase</div>
+<form method="post" action=">
+	{% if profile.user.has_usable_password %}
+	
+	{% else %}
+		no pass
+	{% endif %}
+</form>
 {% endblock content %}

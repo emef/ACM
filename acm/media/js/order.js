@@ -1,8 +1,9 @@
 window.onload = function() {
-	var cart = {},
+	var cart = session_cart || {},
+		total = session_total || 0.0,
 		items = document.getElementById("items").children,
 		p = /(.+) \(\$([\d.]+)\) ID#(\d+)/,
-		item,m,total=0.0;
+		item,m;
 	for(var i=0, j=items.length; i < j; i++) {
 		item = items[i];
 		m = item.children[0].innerHTML.match(p);
@@ -15,6 +16,7 @@ window.onload = function() {
 			}
 		})(m[1], m[2], m[3]);
 	}
+	updateCartDiv(cart, total);
 	document.getElementById("purchase").onclick = function() {
 		var form = document.getElementById("purchase_form"),
 			data = document.createElement("input"),
@@ -36,12 +38,17 @@ window.onload = function() {
 		addKeyVal(form, "wnumber", wnumber); 
 		form.submit();
 	}
+	document.getElementById("cart_reset").onclick = function() {
+		cart = {}
+		total = 0;
+		updateCartDiv(cart, 0);
+	}
 }
 
 function updateCartDiv(cart, total) {
 	var d = document.createElement("div"),
 		cartDiv = document.getElementById("cart"),
-		elem, total=0;
+		elem;
 	for(i in cart) {
 		elem = document.createElement("div");
 		elem.innerHTML = cart[i].quantity + " x " + cart[i].name;
@@ -50,6 +57,7 @@ function updateCartDiv(cart, total) {
 	d.setAttribute("class", "cart_items");
 	console.log(cartDiv);
 	cartDiv.replaceChild(d, cartDiv.children[1]);
+	console.log(total);
 	document.getElementById("cart_total").innerHTML = total.toFixed(2);
 }
 
