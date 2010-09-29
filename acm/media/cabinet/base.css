@@ -38,6 +38,10 @@ html,body {
 	padding: 10px 5px;
 }
 
+#content > div {
+	padding: 10px 0;
+}
+
 #leftbar {
 	float: left;
 	width: 15%;
@@ -107,7 +111,7 @@ html,body {
 	max-height: 250px;
 }
 
-#wnumber_error {
+.error {
 	font-size:9pt;
 	color: red;
 }
@@ -116,6 +120,9 @@ html,body {
 	padding: 15px 0;
 }
 
-#checkout_items > div + div {
+.indented {
 	margin-left: 15px;
 }
+
+.fl { float: left }
+

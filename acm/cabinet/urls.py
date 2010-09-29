@@ -6,4 +6,5 @@ urlpatterns = patterns('acm.cabinet.views',
 	(r'^add_credit$', 'add_credit'),
 	(r'^suggest$', 'suggest'),
 	(r'^checkout$', 'checkout'),
+	(r'^receipt$', 'receipt'),
 )

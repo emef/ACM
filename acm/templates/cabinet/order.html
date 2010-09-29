@@ -1,12 +1,7 @@
 {% extends "cabinet/base.html" %}
+{% load cabinet_extras %}
 
 {% block scripts %}
-{% if cart %}
-<script type="text/javascript">
-var session_cart = {{ cart }},
-	session_total = {{ total }};
-</script>
-{% endif %}
 <script type="text/javascript" src="../site_media/js/json2.js"></script>
 <script type="text/javascript" src="../site_media/js/order.js"></script>
 {% endblock scripts %}
@@ -32,7 +27,7 @@ Make an Order
 </div>
 <div>
 	<h2>Checkout</h2>
-	<div id="wnumber_error"></div>
+	<div class='error' id="wnumber_error"></div>
 	<div>
 		W<input type="text" id="wnumber" />
 	</div>
@@ -48,7 +43,7 @@ Make an Order
 <div id="items">
 {% for item in items %}
 	<div>
-		<div>{{ item.name }} (${{ item.price }}) ID#{{ item.id }}</div>
+		<div>{{ item.name }} ({{ item.price|currency }}) ID#{{ item.id }}</div>
 		<div>
 			<img src="{{item.img.url}}" alt="{{item.name}}" />
 		</div>

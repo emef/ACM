@@ -1,6 +1,6 @@
 window.onload = function() {
-	var cart = session_cart || {},
-		total = session_total || 0.0,
+	var cart = {},
+		total = 0.0,
 		items = document.getElementById("items").children,
 		p = /(.+) \(\$([\d.]+)\) ID#(\d+)/,
 		item,m;
@@ -55,9 +55,7 @@ function updateCartDiv(cart, total) {
 		d.appendChild(elem);
 	}
 	d.setAttribute("class", "cart_items");
-	console.log(cartDiv);
 	cartDiv.replaceChild(d, cartDiv.children[1]);
-	console.log(total);
 	document.getElementById("cart_total").innerHTML = total.toFixed(2);
 }
 

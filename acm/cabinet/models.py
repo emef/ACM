@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 class UserProfile(models.Model):
 	user = models.ForeignKey(User)
 	credit = models.DecimalField(max_digits=5, decimal_places=2)
 
 	def __unicode__(self):
-		return "W%s" % (self.user.username) 
+		return "W%s" % (self.user.user.username) 
 
 class Item(models.Model):
 	name = models.CharField(max_length=100)
@@ -23,7 +24,7 @@ class Receipt(models.Model):
 	total = models.DecimalField(max_digits=5, decimal_places=2)
 
 	def __unicode__(self):
-		return "$%.2f - %s" % (self.user.username, date.strftime("%m/%d/%Y"))
+		return "%s - %s" % (self.user.user.username, self.date.strftime("%m/%d/%Y"))
 
 class ReceiptItem(models.Model):
 	receipt = models.ForeignKey(Receipt)
