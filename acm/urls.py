@@ -6,7 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
-	(r'^cabinet/', include('acm.cabinet.urls')),
+    (r'^cabinet/', include('acm.cabinet.urls')),
+    (r'^membership/', include('acm.membership.urls')),
 )
 
 if settings.DEBUG:

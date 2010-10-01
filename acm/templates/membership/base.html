@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block head %}
+
+<title>{% block title %} ACM Membership {% endblock title %} </title>
+<link rel="stylesheet" type="text/css" href="../site_media/cabinet/base.css" />
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% endblock head %}
+
+{% block body %}
+
+<div id="head">
+	<div class='logo'></div>
+	<div>ACM Membership - {% block heading %} {% endblock heading %}</div>
+</div>
+
+<div id="leftbar">
+	<div id="choices">
+		<a href="register">Registration</a>
+		<a href="account">Account</a>
+	</div>
+	{% block leftbar %}
+	{% endblock leftbar %}
+</div>
+
+<div id="content">
+{% block content %}
+{% endblock content %}
+</div>
+
+{% endblock body %}
