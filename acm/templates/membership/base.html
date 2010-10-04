@@ -3,7 +3,7 @@
 {% block head %}
 
 <title>{% block title %} ACM Membership {% endblock title %} </title>
-<link rel="stylesheet" type="text/css" href="../site_media/cabinet/base.css" />
+<link rel="stylesheet" type="text/css" href="../site_media/base.css" />
 
 {% block scripts %}
 {% endblock scripts %}
@@ -21,6 +21,9 @@
 	<div id="choices">
 		<a href="register">Registration</a>
 		<a href="account">Account</a>
+		{% if user %}
+		<a href="logout">Log Out</a>
+		{% endif %}
 	</div>
 	{% block leftbar %}
 	{% endblock leftbar %}

@@ -27,7 +27,7 @@ html,body {
 }
 
 .logo {
-	background: url(../logo.png);
+	background: url(logo.png);
 	width: 125px;
 	height: 125px;
 }
@@ -40,6 +40,18 @@ html,body {
 
 #content > div {
 	padding: 10px 0;
+}
+
+#content form > div {
+	padding: 5px 5px;
+}
+
+#content form > div > div:first-child {
+	font-size: 11px;
+}
+
+#content form > div > div > input {
+	margin: 0px 5px;
 }
 
 #leftbar {
@@ -109,6 +121,10 @@ html,body {
 #items > div >* img {
 	max-width: 250px;
 	max-height: 250px;
+}
+
+.validation_error input{
+	border: 1px solid #CD3333;
 }
 
 .error {

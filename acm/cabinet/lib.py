@@ -3,13 +3,13 @@ from decimal import *
 
 def get_profile(wnumber):
 	try:
-		return UserProfile.objects.get(user__username=wnumber)
-	except UserProfile.DoesNotExist:
+		return CabinetProfile.objects.get(user__username=wnumber)
+	except CabinetProfile.DoesNotExist:
 		u, created = User.objects.get_or_create(username=wnumber)
 		if created:
 			u.set_unusable_password()
 			u.save()
-		p, created = UserProfile.objects.get_or_create(user=u, credit=Decimal('0.00'))
+		p, created = CabinetProfile.objects.get_or_create(user=u, credit=Decimal('0.00'))
 		return p
 
 def cart_total(cart):

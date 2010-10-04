@@ -1,0 +1,30 @@
+{% extends "membership/base.html" %}
+
+{% block heading %}
+Login
+{% endblock heading %}
+
+{% block content %}
+<form method="post" action="">
+{% csrf_token %}
+	<div>
+		<div>WNumber</div>
+		<div><input type='text' name='username' value='{{ username }}' /></div>
+	</div>
+	<div>
+		<div>Password</div>
+		<div><input type='password' name='password' /></div>
+	</div>
+	<div>
+		<input type='submit' value='login' />
+	</div>
+	<input type='hidden' name='next' value='{{ next }}' />
+</form>
+
+{% if error %}
+<div class='error'>
+	{{ error }}
+</div>
+{% endif %}
+
+{% endblock content %}

@@ -4,6 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
+	("Matt Forbes", "wwu.acm.officers@gmail.com"),
     # ('Your Name', 'your_email@domain.com'),
 )
 
@@ -12,7 +13,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/forbesm2/ACM/acm/db/cabinet.db',                      # Or path to database file if using sqlite3.
+        'NAME': '/home/matt/ACM/acm/db/cabinet.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -45,19 +46,19 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/forbesm2/ACM/acm/media/'
+MEDIA_ROOT = '/home/matt/ACM/acm/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://localhost:8000/site_media/'
+MEDIA_URL = 'http://emef.servebeer.com/site_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/site_media/admin/'
 
-STATIC_MEDIA_ROOT = '/home/forbesm2/ACM/acm/media/'
+LOGIN_URL = '/membership/login'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'z5$jr#c-_z0!f4fw*x9u+_!_4xs!=_w*sg0$x*v+8g)r-h&exq'
@@ -82,7 +83,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'acm.urls'
 
 TEMPLATE_DIRS = (
-    "/home/forbesm2/ACM/acm/templates/",
+    "/home/matt/ACM/acm/templates/",
 )
 
 INSTALLED_APPS = (

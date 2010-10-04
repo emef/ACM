@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
-class UserProfile(models.Model):
+class CabinetProfile(models.Model):
 	user = models.ForeignKey(User)
 	credit = models.DecimalField(max_digits=5, decimal_places=2)
 
@@ -19,7 +19,7 @@ class Item(models.Model):
 		return "%s($%.2f)" % (self.name, self.price)
 
 class Receipt(models.Model):
-	user = models.ForeignKey(UserProfile)
+	user = models.ForeignKey(CabinetProfile)
 	date = models.DateField(auto_now=True)
 	total = models.DecimalField(max_digits=5, decimal_places=2)
 

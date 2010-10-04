@@ -2,9 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
-#user.username = WNumber
-class member(models.Model):
-    user = models.ForeignKey(User)
-    paid_with_cash = models.BooleanField()
-    pending_payment = models.BooleanField()
-    
+CHOICES = (
+	(1, "No Payment"),
+	(2, "Online Payment"),
+	(3, "Cash Payment"),
+)
+
+class Member(models.Model):
+	payment = models.IntegerField(choices=CHOICES)
+	user = models.ForeignKey(User)

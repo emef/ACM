@@ -36,7 +36,7 @@ def checkout(request):
 		c = {}
 		c['profile'] = request.session['profile']
 		c['cart'] = request.session['cart']
-		c['total'] = request.session['total']
+		c['total'] = request.session.get('total', cart_total(c['cart']))
 		c['can_purchase'] = c['profile'].credit >= c['total']
 		return c
 
