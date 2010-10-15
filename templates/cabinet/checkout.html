@@ -30,7 +30,7 @@ Checkout
 					Total: {{ total|currency }}
 				</div>
 				<div>
-				{% if profile.user.has_usable_password == True %}
+				{% if profile.user.has_usable_password %}
 					Password: <input type="password" name="password" />
 				{% endif %}
 				</div>

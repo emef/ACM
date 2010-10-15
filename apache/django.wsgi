@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.append('/home/matt/ACM/')
+sys.path.append('/usr/django/')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'acm.settings'
 
 import django.core.handlers.wsgi

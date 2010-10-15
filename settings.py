@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/matt/ACM/acm/db/cabinet.db',                      # Or path to database file if using sqlite3.
+        'NAME': '/usr/django/acm/db/cabinet.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -46,17 +46,17 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/matt/ACM/acm/media/'
+MEDIA_ROOT = '/usr/django/acm/static/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://emef.servebeer.com/site_media/'
+MEDIA_URL = 'http://localhost/acm/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/site_media/admin/'
+ADMIN_MEDIA_PREFIX = '/acm/static/admin/'
 
 LOGIN_URL = '/membership/login'
 
@@ -83,7 +83,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'acm.urls'
 
 TEMPLATE_DIRS = (
-    "/home/matt/ACM/acm/templates/",
+    "/usr/django/acm/templates/",
 )
 
 INSTALLED_APPS = (
