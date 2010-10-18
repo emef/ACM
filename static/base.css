@@ -7,7 +7,8 @@ html,body {
 }
 
 .title {
-	font-size: 14pt;
+	color: #192958;
+	font-size: 16pt;
 	font-weight: bold;
 }
 
@@ -36,6 +37,7 @@ html,body {
 	float: left;
 	max-width: 80%;
 	padding: 10px 5px;
+	font-size: 14pt;
 }
 
 #content > div {
@@ -50,14 +52,21 @@ html,body {
 	font-size: 11px;
 }
 
-#content form > div > div > input {
+#content form input {
 	margin: 0px 5px;
+}
+
+#content form input[type=password] {
+	width: 7em;
 }
 
 #leftbar {
 	float: left;
 	width: 15%;
 	min-width: 150px;
+}
+#leftbar input[type=text] {
+	width: 10em;
 }
 #leftbar h2 {
 	font-size: 14pt;
@@ -133,6 +142,7 @@ html,body {
 }
 
 #checkout_items {
+	border: 1px solid #192958;
 	padding: 15px 0;
 }
 

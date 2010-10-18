@@ -2,7 +2,7 @@ from django.core.context_processors import csrf
 from django.http import HttpResponse, Http404
 from django.shortcuts import render_to_response, redirect
 from acm.cabinet.models import *
-from acm.cabinet.lib import get_profile, cart_total, make_purchase
+from acm.cabinet.lib import *
 import simplejson as json
 
 def order(request):
@@ -32,36 +32,38 @@ def suggest(request):
 	return render_to_response('cabinet/suggest.html')
 
 def checkout(request):
-	def buildContext():
-		c = {}
-		c['profile'] = request.session['profile']
-		c['cart'] = request.session['cart']
-		c['total'] = request.session.get('total', cart_total(c['cart']))
-		c['can_purchase'] = c['profile'].credit >= c['total']
-		return c
-
+	#bad request...
 	if not ("cart" in request.session and "profile" in request.session):
 		raise Http404
+	#redirected from 'order', should have order info in session
 	elif request.method == "GET":
-		c = buildContext()
+		c = build_checkout_context(request)
 		return render_to_response('cabinet/checkout.html', c)
+	#post request, do some validation and finalize the purchase
 	else:
 		profile = request.session['profile']
 		cart = request.session['cart']
-		password = request.session.get('password', '')
-		if profile.user.has_usable_password() and (not profile.user.check_password(password)):
-			print profile.user
-			c = buildContext()
+		password = request.POST.get('password', '')
+		#user has a password setup, and it did not match
+		if profile.user.has_usable_password() and not profile.user.password == password:
+			c = build_checkout_context(request)
 			c['error'] = "Incorrect password for this account"
 			return render_to_response('cabinet/checkout.html', c)
+		#successful order, call make_purchase
 		else:
 			request.session.clear()
 			request.session['receipt'] = make_purchase(profile, cart)
 			return redirect('acm.cabinet.views.receipt')
 
 def receipt(request):
-	return HttpResponse("hey")
-			
+	#just came from checkout, display receipt information and blow up the reciept
+	if request.method == 'GET' and 'receipt' in request.session:
+		receipt = request.session['receipt']
+		request.session.clear()
+		return render_to_response('cabinet/receipt.html', { 'receipt': receipt })
+	#why the hell are you here?
+	else:
+		raise Http404
 			
 			
 

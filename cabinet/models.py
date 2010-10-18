@@ -7,7 +7,7 @@ class CabinetProfile(models.Model):
 	credit = models.DecimalField(max_digits=5, decimal_places=2)
 
 	def __unicode__(self):
-		return "W%s" % (self.user.user.username) 
+		return "W%s" % (self.user.username) 
 
 class Item(models.Model):
 	name = models.CharField(max_length=100)

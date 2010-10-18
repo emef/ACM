@@ -15,7 +15,6 @@ Checkout
 	<div class='indented'> Available credit: {{ profile.credit|currency }} </div>
 </div>
 <div id='checkout_items'>
-	<div class='title'>Cart Items</div>
 	{% for k,v in cart.items %}
 		<div class='indented'>{{ v.quantity }} x {{ v.name }} </div>
 	{% endfor %}
@@ -23,8 +22,8 @@ Checkout
 </div>
 <div>
 	<div class='title'>Complete Purchase</div>
-	<div class='indented'>
-		{% if can_purchase %}
+	{% if can_purchase %}
+		<div class='indented'>
 			<form method="post" action="">
 				<div>
 					Total: {{ total|currency }}
@@ -32,24 +31,25 @@ Checkout
 				<div>
 				{% if profile.user.has_usable_password %}
 					Password: <input type="password" name="password" />
+				{% else %}
+					<div class='error'>
+						*You don't have a password set up, you can do that <a href='set_password'>here</a>
+					</div>
 				{% endif %}
 				</div>
 				<div>
 					<input type='submit' value='complete purchase' />
 				</div>
 			</form>
-		{% else %}
-			<div class='error'>
-				You do not have enough credit for this purchase 
-				<div>
-					<a href='order'><button>Go back</button></a>
-					<a href='add_credit'><button>Add Credit</button></a>
-				</div>
-			</div>
-		{% endif %}
-	</div>
-</div>
-<div class='error'>
-	*You don't have a password set up, you can do that <a href='set_password'>here</a>
+		</div>
+	{% else %}
+		<div class='error'>
+			You do not have enough credit for this purchase 
+		</div>
+		<div>
+			<a href='order'><button>Go back</button></a>
+			<a href='add_credit'><button>Add Credit</button></a>
+		</div>
+	{% endif %}
 </div>
 {% endblock content %}

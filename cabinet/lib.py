@@ -43,3 +43,13 @@ def make_purchase(profile, cart):
 		receipt.receiptitem_set.create(item=item, quantity=quantity)
 
 	return receipt
+
+def build_checkout_context(request):
+		c = {}
+		c['profile'] = request.session['profile']
+		c['cart'] = request.session['cart']
+		c['total'] = request.session.get('total', cart_total(c['cart']))
+		c['can_purchase'] = c['profile'].credit >= c['total']
+		return c
+
+
